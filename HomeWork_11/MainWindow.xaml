@@ -1,0 +1,62 @@
+﻿<Window x:Class="HomeWork_11.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork_11"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView x:Name="tv" HorizontalAlignment="Stretch" VerticalAlignment="Top" SelectedItemChanged="tv_SelectedItemChanged">
+            <TreeView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Изменить имя департамента" Click="RenameDep_Click"/>
+                    <MenuItem Header="Удалить департамент" Click="DeleteDep_Click"/>
+                </ContextMenu>
+            </TreeView.ContextMenu>
+        </TreeView>
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="5"/>
+        <ListView x:Name="employees_lv"  Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="60" DisplayMemberBinding="{Binding Position}" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Click="SortByPos">Position</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="70" DisplayMemberBinding="{Binding FirstName}">
+                        <GridViewColumn.Header>
+                        <GridViewColumnHeader Click="SortByFirstName">FirstName</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                </GridViewColumn>
+                    <GridViewColumn Width="90" DisplayMemberBinding="{Binding LastName}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Click="SortByLastName">LastName</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="60" DisplayMemberBinding="{Binding Salary}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Click="SortBySalary">Salary</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        </GridViewColumn>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Phone}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Click="SortByPhone">Phone</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Изменить имя" Click="RenameEmpl"/>
+                    <MenuItem Header="Удалить сотрудника" Click="DeleteEmpl_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+    </Grid>
+</Window>
